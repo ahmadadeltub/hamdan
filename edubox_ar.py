@@ -1,15 +1,6 @@
 import cv2
-import json
-import os
 
-QUESTIONS_FILE = 'questions.json'
-
-
-def load_questions():
-    if not os.path.exists(QUESTIONS_FILE):
-        return []
-    with open(QUESTIONS_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+from question_store import load_questions
 
 
 def draw_question(frame, q):

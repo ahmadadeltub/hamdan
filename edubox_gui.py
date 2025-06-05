@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-from teacher_interface import load_questions, save_questions
+from question_store import load_questions, save_questions
 from edubox_ar import run_quiz
 
 
