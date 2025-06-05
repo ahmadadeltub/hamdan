@@ -40,13 +40,13 @@ def detect_motion(bg_gray, frame_gray):
     return (cx, cy)
 
 
-def main():
+def run_quiz(camera_index=0):
     questions = load_questions()
     if not questions:
         print('No questions available. Use teacher_interface.py to add.')
         return
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(camera_index)
     if not cap.isOpened():
         print('Camera not available')
         return
@@ -104,6 +104,14 @@ def main():
         else:
             ans_text = q['choices'][sel]
         print(f"Q{idx+1}: {ans_text}")
+
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='Run EduBox AR quiz')
+    parser.add_argument('--camera', type=int, default=0, help='Camera index (default 0)')
+    args = parser.parse_args()
+    run_quiz(camera_index=args.camera)
 
 
 if __name__ == '__main__':
